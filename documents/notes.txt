@@ -1,0 +1,33 @@
+open file
+#include <sys/types.h>
+#inlcude <sys/stat.h>
+#include <unistd.h>
+
+int fd = open("test.txt",O_RDONLY);
+
+
+
+---
+About the read command
+
+ssize_t read(int fd, void *buf, size_t count);
+ssize_t is same a size_t but it is signed.
+
+read up to count and put it in buf.
+it read the bytes and will not append it with a '\0'. Remember that when reading the buffer.
+if it reaches the end of file, it will return the amount of bytes read and put those bytes in the buffer. If it reaches end of file before the count, it will stop prematurely. 
+the next time read is called it will reach EOF and return 0 and the buffer will not be changed because nothing has been read.
+
+return 
+if success, number of bytes read is returned and the 
+---
+get_next_line 
+will return 0 when EOF is reached 
+Read that each file will end with a newline.
+So return with a "" empty string as in '\0' when reading a empyt file and return 0.
+Moulinette will free *line after each call of get_next_line.
+
+
+behaviour
+when encounter \n\n i think it should return an empty string "".
+when buffersize is 0 or negative return -1.

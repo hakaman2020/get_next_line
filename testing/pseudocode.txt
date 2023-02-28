@@ -1,0 +1,24 @@
+check bufferremnant = 0
+start an empty line string
+if no
+	check if remnant has newline
+	if yes
+		add remnant till newline to line; strjoin
+		create new bufferremnant with rest of bufferremnant (strdup)
+		return (1)
+	if no	
+		add all remnant to newline strjoin
+
+while buffer has no newline or EOF
+	read file
+	check if buffer has newline
+	if no 
+		add buffer to line and start over (strjoin)
+	if yes
+		add to string till newline
+		create new bufferremnant with rest of buffer (strdup)
+		return 1
+return 0
+			
+
+		
